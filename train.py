@@ -143,11 +143,11 @@ def main(args):
             # save_steps=0.05,
             save_total_limit=args.save_total_limit,
             #########
-            eval_strategy="steps" if args.wikitext_103 else "no",
+            eval_strategy="no",  # disable eval-on-start to avoid long startup pauses
             metric_for_best_model="loss",
-            eval_steps=args.save_steps,
-            eval_on_start=True if args.wikitext_103 else False,
-            load_best_model_at_end=True if args.wikitext_103 else False,
+            eval_steps=None,
+            eval_on_start=False,
+            load_best_model_at_end=False,
             #########
             dataset_text_field=args.dataset_text_field,
             max_length=config.max_position_embeddings,
